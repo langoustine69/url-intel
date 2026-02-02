@@ -207,7 +207,6 @@ addEntrypoint({
   key: 'overview',
   description: 'Free overview - check agent status and capabilities',
   input: z.object({}),
-  price: '0',
   handler: async () => {
     return { 
       output: { 
@@ -216,6 +215,7 @@ addEntrypoint({
         description: 'URL metadata and web intelligence for AI agents',
         capabilities: ['metadata', 'headers', 'ssl', 'redirects', 'full-report'],
         pricing: {
+          overview: 'FREE',
           metadata: '$0.001',
           headers: '$0.001',
           ssl: '$0.002',
@@ -390,7 +390,7 @@ addEntrypoint({
   input: z.object({
     windowMs: z.number().optional().describe('Time window in ms'),
   }),
-  price: '0',
+    // Free endpoint - no price
   handler: async (ctx) => {
     const tracker = agent.analytics?.paymentTracker;
     if (!tracker) {
@@ -415,7 +415,7 @@ addEntrypoint({
     windowMs: z.number().optional(),
     limit: z.number().optional().default(50),
   }),
-  price: '0',
+    // Free endpoint - no price
   handler: async (ctx) => {
     const tracker = agent.analytics?.paymentTracker;
     if (!tracker) {
@@ -430,7 +430,7 @@ addEntrypoint({
   key: 'analytics-csv',
   description: 'Export payment data as CSV',
   input: z.object({ windowMs: z.number().optional() }),
-  price: '0',
+    // Free endpoint - no price
   handler: async (ctx) => {
     const tracker = agent.analytics?.paymentTracker;
     if (!tracker) {
